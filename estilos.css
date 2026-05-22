@@ -1,0 +1,579 @@
+/* estilos.css - aca puse todo el diseño del sitio */
+/* use la fuente Poppins porque se ve mas prolija que Arial */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* esto resetea los margenes que pone el navegador por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* hace que el padding no agrande los elementos */
+}
+
+/* estilo base de toda la pagina */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f4faf4; /* verde muy clarito de fondo */
+    color: #333;
+}
+
+/* ---- NAVBAR ---- */
+/* use position sticky para que quede fija arriba al hacer scroll */
+nav {
+    background-color: #1a6b2f;
+    padding: 0 40px;
+    height: 60px;
+    display: flex; /* flex para poner el logo a la izquierda y los links a la derecha */
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15); /* sombrita abajo para que se vea separada */
+    z-index: 10; /* para que quede por encima de todo lo demas */
+}
+
+.nav-logo {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+/* el span del logo lo puse en verde clarito para que contraste */
+.nav-logo span {
+    color: #a5d6a7;
+}
+
+.nav-links {
+    list-style: none; /* saco los puntitos de la lista */
+    display: flex;
+    gap: 6px;
+}
+
+.nav-links a {
+    color: #c8e6c9;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background 0.2s; /* animacion suave al pasar el mouse */
+}
+
+.nav-links a:hover {
+    background-color: rgba(255,255,255,0.15);
+    color: white;
+}
+
+/* clase para marcar el link de la pagina actual */
+.nav-links a.activo {
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    font-weight: 600;
+}
+
+/* ---- HERO ---- */
+/* la seccion grande de bienvenida en la pagina de inicio */
+.hero {
+    background: linear-gradient(135deg, #1a6b2f, #2e9e50); /* degradado de dos verdes */
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+
+/* el span dentro del h1 lo puse en verde clarito */
+.hero h1 span {
+    color: #a5d6a7;
+}
+
+.hero p {
+    font-size: 1rem;
+    color: #c8e6c9;
+    max-width: 520px;
+    margin: 0 auto 30px; /* auto para centrarlo horizontalmente */
+    line-height: 1.7;
+}
+
+.btn-principal {
+    display: inline-block;
+    background-color: white;
+    color: #1a6b2f;
+    padding: 12px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s, transform 0.2s;
+}
+
+/* al pasar el mouse sube un poco con transform */
+.btn-principal:hover {
+    background-color: #e8f5e9;
+    transform: translateY(-2px);
+}
+
+/* ---- CONTENEDOR ---- */
+/* limita el ancho del contenido y lo centra en la pantalla */
+.contenedor {
+    max-width: 960px;
+    margin: 50px auto;
+    padding: 0 24px;
+}
+
+/* ---- TITULOS DE SECCION ---- */
+.sec-titulo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a6b2f;
+    margin-bottom: 6px;
+}
+
+/* lineita verde decorativa debajo del titulo */
+.sec-linea {
+    width: 50px;
+    height: 3px;
+    background-color: #2e9e50;
+    border-radius: 2px;
+    margin-bottom: 14px;
+}
+
+.sec-sub {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+}
+
+/* ---- TARJETAS ---- */
+/* use grid para que las tarjetas se acomoden solas en 3 columnas */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.tarjeta {
+    background: white;
+    border: 1px solid #dcedc8;
+    border-radius: 10px;
+    padding: 24px 20px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* efecto hover: sube un poco y aparece sombra */
+.tarjeta:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transform: translateY(-3px);
+}
+
+.tarjeta-icono {
+    font-size: 2rem;
+    margin-bottom: 12px;
+}
+
+.tarjeta h3 {
+    color: #1a6b2f;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.tarjeta p {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* ---- TABLA ---- */
+.tabla-contenedor {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #dcedc8;
+    overflow: hidden; /* para que las esquinas redondeadas se vean bien */
+    margin-bottom: 50px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* para que no haya doble borde entre celdas */
+}
+
+thead tr {
+    background-color: #1a6b2f;
+}
+
+th {
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 11px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.88rem;
+    color: #444;
+}
+
+/* la ultima fila no necesita borde abajo */
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background-color: #f1f8e9;
+}
+
+/* ---- TABS ---- */
+/* los botones de pestaña del explorador */
+.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 28px;
+    flex-wrap: wrap; /* para que no se desborden en pantallas chicas */
+}
+
+.tab {
+    background: white;
+    border: 1px solid #a5d6a7;
+    color: #1a6b2f;
+    padding: 9px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif; /* hay que repetir la fuente en los botones */
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    background-color: #e8f5e9;
+}
+
+/* cuando un tab esta activo se pone verde oscuro */
+.tab.activo {
+    background-color: #1a6b2f;
+    color: white;
+    border-color: #1a6b2f;
+}
+
+/* los paneles estan ocultos por defecto */
+.panel {
+    display: none;
+}
+
+/* y se muestran cuando tienen la clase activo */
+.panel.activo {
+    display: block;
+}
+
+/* ---- CAJA DE HERRAMIENTA ---- */
+.herramienta {
+    background: white;
+    border: 1px solid #dcedc8;
+    border-radius: 10px;
+    padding: 32px;
+    margin-bottom: 40px;
+}
+
+/* ---- FORMULARIO ---- */
+.form-label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    background: white;
+    color: #333;
+}
+
+/* cuando el input esta seleccionado se pone el borde verde */
+.form-input:focus,
+.form-select:focus {
+    border-color: #2e9e50;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46,158,80,0.1);
+}
+
+/* para poner dos campos lado a lado */
+.form-fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+/* grupo de radios para el tipo de cabello */
+.radio-grupo {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.radio-grupo label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #444;
+}
+
+.radio-grupo input[type="radio"] {
+    accent-color: #1a6b2f; /* cambia el color del radio al verde */
+}
+
+/* ---- BOTONES ---- */
+.btn-calcular {
+    background-color: #1a6b2f;
+    color: white;
+    border: none;
+    padding: 11px 28px;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-right: 8px;
+}
+
+.btn-calcular:hover {
+    background-color: #145224;
+}
+
+/* boton secundario para limpiar, mas discreto */
+.btn-limpiar {
+    background-color: white;
+    color: #666;
+    border: 1px solid #ccc;
+    padding: 11px 22px;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-limpiar:hover {
+    background-color: #f5f5f5;
+}
+
+/* boton de registrar ocupa todo el ancho del formulario */
+.btn-registrar {
+    width: 100%;
+    background-color: #1a6b2f;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 6px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 4px;
+}
+
+.btn-registrar:hover {
+    background-color: #145224;
+}
+
+/* ---- RESULTADO ---- */
+/* el div de resultado empieza oculto y aparece con js */
+.resultado {
+    margin-top: 22px;
+    padding: 20px;
+    background-color: #e8f5e9;
+    border-left: 4px solid #2e9e50; /* lineita verde a la izquierda */
+    border-radius: 0 8px 8px 0;
+    display: none;
+}
+
+/* cuando js le agrega la clase visible se muestra */
+.resultado.visible {
+    display: block;
+}
+
+.resultado h4 {
+    color: #1a6b2f;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.resultado-valor {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a6b2f;
+    margin-bottom: 8px;
+}
+
+.resultado p {
+    font-size: 0.88rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* ---- MENSAJES DE FORMULARIO ---- */
+/* mensaje de exito en verde */
+.msg-ok {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    color: #1a6b2f;
+    padding: 11px 16px;
+    border-radius: 6px;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+/* mensaje de error en rojo */
+.msg-error {
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+    color: #c62828;
+    padding: 11px 16px;
+    border-radius: 6px;
+    margin-top: 14px;
+    font-size: 0.9rem;
+    display: none;
+}
+
+/* js les agrega esta clase para mostrarlos */
+.msg-ok.visible,
+.msg-error.visible {
+    display: block;
+}
+
+/* ---- LABORATORIO ---- */
+/* dos columnas: formulario a la izquierda, stats a la derecha */
+.lab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* ---- TARJETAS DE ESTADISTICAS ---- */
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #dcedc8;
+    border-radius: 10px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.stat-icono {
+    font-size: 1.8rem;
+}
+
+.stat-card h4 {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.stat-card p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a6b2f;
+}
+
+/* ---- LISTA DE REGISTROS ---- */
+.registro-item {
+    background: white;
+    border: 1px solid #dcedc8;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reg-nombre {
+    font-weight: 600;
+    color: #222;
+    font-size: 0.95rem;
+}
+
+.reg-info {
+    font-size: 0.82rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+/* etiquetita verde que dice registrado */
+.reg-badge {
+    background-color: #e8f5e9;
+    color: #1a6b2f;
+    border: 1px solid #a5d6a7;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ---- FOOTER ---- */
+footer {
+    text-align: center;
+    padding: 24px;
+    margin-top: 40px;
+    border-top: 1px solid #dcedc8;
+    color: #999;
+    font-size: 0.82rem;
+}
+
+footer strong {
+    color: #1a6b2f;
+}
+
+/* ---- RESPONSIVE ---- */
+/* para que se vea bien en celulares, paso todo a una sola columna */
+@media (max-width: 700px) {
+    .grid-cards {
+        grid-template-columns: 1fr;
+    }
+    .form-fila {
+        grid-template-columns: 1fr;
+    }
+    .lab-grid {
+        grid-template-columns: 1fr;
+    }
+    nav {
+        padding: 0 16px;
+    }
+}

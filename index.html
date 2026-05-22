@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> <!-- para que anden bien los acentos -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- para que se vea bien en celular -->
+    <title>Un poco de Genética | Inicio</title>
+    <link rel="stylesheet" href="estilos.css"> <!-- conecto el css -->
+</head>
+<body>
+
+    <!-- barra de navegacion que aparece en las tres paginas -->
+    <nav>
+        <a href="index.html" class="nav-logo">Un poco de <span>Genética</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="activo">Inicio</a></li> <!-- activo marca la pagina actual -->
+            <li><a href="explorador.html">Explorador</a></li>
+            <li><a href="laboratorio.html">Laboratorio</a></li>
+        </ul>
+    </nav>
+
+    <!-- seccion principal con titulo y boton -->
+    <div class="hero">
+        <h1>Descubrí el mundo de los <span>Genes</span></h1>
+        <p>Un sitio para aprender sobre genética, ADN, herencia y mucho más de forma interactiva y sencilla.</p>
+        <a href="explorador.html" class="btn-principal">Ir al Explorador →</a>
+    </div>
+
+    <!-- contenido principal de la pagina -->
+    <div class="contenedor">
+
+        <!-- seccion de que es la genetica con 6 tarjetas -->
+        <!-- imagen de la doble helice del ADN, la saque de Wikimedia Commons que es de uso libre -->
+        <div style="text-align:center; margin-bottom:40px;">
+            <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/DNA_Structure%2BKey%2BLabelled.pn_NoBB.png/800px-DNA_Structure%2BKey%2BLabelled.pn_NoBB.png"
+                alt="Estructura de la doble hélice del ADN"
+                style="width:100%; max-width:420px; border-radius:12px; box-shadow:0 4px 20px rgba(0,0,0,0.1);"
+            >
+            <p style="font-size:0.8rem; color:#aaa; margin-top:8px;">Estructura de la doble hélice del ADN — Fuente: Wikimedia Commons</p>
+        </div>
+
+        <div class="sec-linea"></div>
+        <h2 class="sec-titulo">¿Qué es la Genética?</h2>
+        <p class="sec-sub">La genética es la rama de la biología que estudia cómo se transmiten los rasgos de padres a hijos.</p>
+
+        <!-- grid de 3 columnas con las tarjetas informativas -->
+        <div class="grid-cards">
+            <div class="tarjeta">
+                <div class="tarjeta-icono">🧬</div>
+                <h3>ADN</h3>
+                <p>El Ácido Desoxirribonucleico contiene toda la información genética de un ser vivo. Está en el núcleo de cada célula y se organiza en cromosomas.</p>
+            </div>
+            <div class="tarjeta">
+                <div class="tarjeta-icono">🔬</div>
+                <h3>Genes</h3>
+                <p>Son segmentos del ADN que contienen instrucciones para fabricar proteínas. El ser humano tiene entre 20.000 y 25.000 genes aproximadamente.</p>
+            </div>
+            <div class="tarjeta">
+                <div class="tarjeta-icono">👨‍👩‍👧</div>
+                <h3>Herencia</h3>
+                <p>Los rasgos se transmiten de padres a hijos mediante alelos dominantes y recesivos. Gregor Mendel fue el primero en estudiar esto con guisantes.</p>
+            </div>
+            <div class="tarjeta">
+                <div class="tarjeta-icono">🩸</div>
+                <h3>Grupos Sanguíneos</h3>
+                <p>El tipo de sangre (A, B, AB, O) está determinado genéticamente. Heredamos un alelo de cada progenitor y algunos son dominantes sobre otros.</p>
+            </div>
+            <div class="tarjeta">
+                <div class="tarjeta-icono">🔄</div>
+                <h3>Mutaciones</h3>
+                <p>Son cambios en la secuencia del ADN. Pueden ser causadas por errores en la replicación o por factores externos como la radiación ultravioleta.</p>
+            </div>
+            <div class="tarjeta">
+                <div class="tarjeta-icono">🧪</div>
+                <h3>Ingeniería Genética</h3>
+                <p>Permite modificar el ADN de un organismo. La tecnología CRISPR es una de las más modernas y se usa para tratar enfermedades hereditarias.</p>
+            </div>
+        </div>
+
+        <!-- tabla con informacion de las 4 bases del adn -->
+        <div class="sec-linea"></div>
+        <h2 class="sec-titulo">Bases Nitrogenadas del ADN</h2>
+        <p class="sec-sub">Las cuatro bases del ADN siempre se emparejan de la misma manera para formar la doble hélice.</p>
+
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Base</th>
+                        <th>Símbolo</th>
+                        <th>Se empareja con</th>
+                        <th>Tipo</th>
+                        <th>Dato extra</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Adenina</td>
+                        <td><strong style="color:#1a6b2f">A</strong></td>
+                        <td>Timina (T)</td>
+                        <td>Purina</td>
+                        <td>Doble enlace de hidrógeno</td>
+                    </tr>
+                    <tr>
+                        <td>Timina</td>
+                        <td><strong style="color:#2196f3">T</strong></td>
+                        <td>Adenina (A)</td>
+                        <td>Pirimidina</td>
+                        <td>Par complementario de A</td>
+                    </tr>
+                    <tr>
+                        <td>Guanina</td>
+                        <td><strong style="color:#ff9800">G</strong></td>
+                        <td>Citosina (C)</td>
+                        <td>Purina</td>
+                        <td>Triple enlace, mayor estabilidad</td>
+                    </tr>
+                    <tr>
+                        <td>Citosina</td>
+                        <td><strong style="color:#e91e63">C</strong></td>
+                        <td>Guanina (G)</td>
+                        <td>Pirimidina</td>
+                        <td>Par complementario de G</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- pie de pagina -->
+    <footer>
+        <strong>Un poco de Genética</strong> · Sitio educativo de Genética · 2026
+    </footer>
+
+</body>
+</html>
