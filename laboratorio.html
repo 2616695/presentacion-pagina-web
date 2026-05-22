@@ -2,161 +2,80 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un poco de Genética | Laboratorio</title>
+    <title>Un Poco de Genética | Laboratorio</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <!-- navbar con activo en laboratorio -->
     <nav>
-        <a href="index.html" class="nav-logo">Un poco de <span>Genética</span></a>
-        <ul class="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="explorador.html">Explorador</a></li>
-            <li><a href="laboratorio.html" class="activo">Laboratorio</a></li>
-        </ul>
+        <a href="index.html">Inicio</a>
+        <a href="explorador.html">Explorador</a>
+        <a href="laboratorio.html">Laboratorio</a>
     </nav>
 
-    <div class="contenedor">
+    <h1>Laboratorio Genético</h1>
 
-        <div class="sec-linea"></div>
-        <h2 class="sec-titulo">Laboratorio Genético</h2>
-        <p class="sec-sub">Registrá tu perfil genético y consultá los datos de los participantes.</p>
+    <div class="caja">
+        <h2>Registrar Perfil</h2>
+        <p>Completá el formulario para registrar tu perfil genético.</p>
 
-        <!-- dos columnas: formulario a la izquierda y estadisticas a la derecha -->
-        <div class="lab-grid">
+        <label>Nombre:</label>
+        <input type="text" id="reg-nombre" placeholder="Tu nombre">
 
-            <!-- FORMULARIO DE REGISTRO -->
-            <div class="herramienta">
-                <h3 style="color:#1a6b2f; font-size:1rem; margin-bottom:22px;">📋 Registrar perfil</h3>
+        <label>Edad:</label>
+        <input type="number" id="reg-edad" placeholder="Tu edad" min="1" max="120">
 
-                <!-- campo de texto para el nombre -->
-                <label class="form-label">Nombre completo *</label>
-                <input type="text" id="reg-nombre" class="form-input" placeholder="Ej: Juan Pérez">
+        <label>Correo:</label>
+        <input type="email" id="reg-email" placeholder="tu@email.com">
 
-                <!-- dos campos en la misma fila con form-fila -->
-                <div class="form-fila">
-                    <div>
-                        <label class="form-label">Edad *</label>
-                        <input type="number" id="reg-edad" class="form-input" placeholder="Ej: 20" min="1" max="120">
-                    </div>
-                    <div>
-                        <label class="form-label">Sexo *</label>
-                        <select id="reg-sexo" class="form-select">
-                            <option value="">— Seleccioná —</option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </div>
-                </div>
+        <label>Tipo de sangre:</label>
+        <select id="reg-sangre">
+            <option value="">-- Seleccionar --</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
 
-                <label class="form-label">Correo electrónico *</label>
-                <input type="email" id="reg-email" class="form-input" placeholder="tu@email.com">
+        <label>Color de ojos:</label>
+        <select id="reg-ojos">
+            <option value="">-- Seleccionar --</option>
+            <option value="Marron">Marrón</option>
+            <option value="Verde">Verde</option>
+            <option value="Azul">Azul</option>
+            <option value="Gris">Gris</option>
+        </select>
 
-                <!-- select con los 8 tipos de sangre posibles -->
-                <label class="form-label">Tipo de sangre *</label>
-                <select id="reg-sangre" class="form-select">
-                    <option value="">— Seleccioná —</option>
-                    <option value="A+">A positivo (A+)</option>
-                    <option value="A-">A negativo (A−)</option>
-                    <option value="B+">B positivo (B+)</option>
-                    <option value="B-">B negativo (B−)</option>
-                    <option value="AB+">AB positivo (AB+)</option>
-                    <option value="AB-">AB negativo (AB−)</option>
-                    <option value="O+">O positivo (O+)</option>
-                    <option value="O-">O negativo (O−)</option>
-                </select>
+        <label>Tipo de cabello:</label>
+        <select id="reg-cabello">
+            <option value="">-- Seleccionar --</option>
+            <option value="Rizado">Rizado</option>
+            <option value="Ondulado">Ondulado</option>
+            <option value="Liso">Liso</option>
+        </select>
 
-                <label class="form-label">Color de ojos *</label>
-                <select id="reg-ojos" class="form-select">
-                    <option value="">— Seleccioná —</option>
-                    <option value="Marrón">Marrón</option>
-                    <option value="Verde">Verde</option>
-                    <option value="Azul">Azul</option>
-                    <option value="Gris">Gris</option>
-                    <option value="Negro">Negro</option>
-                </select>
+        <button onclick="registrar()">Registrar</button>
+        <button onclick="limpiarFormulario()">Limpiar</button>
 
-                <!-- use radio buttons para el cabello porque son pocas opciones -->
-                <label class="form-label">Tipo de cabello *</label>
-                <div class="radio-grupo">
-                    <label>
-                        <input type="radio" name="cabello" value="Rizado"> Rizado
-                    </label>
-                    <label>
-                        <input type="radio" name="cabello" value="Ondulado"> Ondulado
-                    </label>
-                    <label>
-                        <input type="radio" name="cabello" value="Liso"> Liso
-                    </label>
-                </div>
+        <p id="msg-registro"></p>
+    </div>
 
-                <!-- boton que llama a la funcion registrar() del codigo.js -->
-                <button class="btn-registrar" onclick="registrar()">Registrar perfil</button>
-
-                <!-- mensajes que js muestra segun si salio bien o mal -->
-                <div id="msg-ok" class="msg-ok">✓ Perfil registrado correctamente.</div>
-                <div id="msg-error" class="msg-error">⚠ Por favor completá todos los campos.</div>
-            </div>
-
-            <!-- PANEL DE ESTADISTICAS -->
-            <!-- estos numeros los actualiza js cada vez que se registra alguien -->
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-icono">🧬</div>
-                    <div>
-                        <h4>Perfiles registrados</h4>
-                        <p id="contador">0</p> <!-- js actualiza este numero -->
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icono">🩸</div>
-                    <div>
-                        <h4>Tipo de sangre más común</h4>
-                        <p id="sangre-comun">—</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icono">👁️</div>
-                    <div>
-                        <h4>Color de ojos más frecuente</h4>
-                        <p id="ojos-comun">—</p>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icono">💇</div>
-                    <div>
-                        <h4>Cabello predominante</h4>
-                        <p id="cabello-comun">—</p>
-                    </div>
-                </div>
-            </div>
-
+    <div class="caja">
+        <h2>Perfiles Registrados</h2>
+        <p>Total de perfiles: <strong id="contador">0</strong></p>
+        <div id="lista-registros">
+            <p>Todavía no hay perfiles registrados.</p>
         </div>
-
-        <!-- lista de todos los perfiles registrados -->
-        <!-- js genera las tarjetas aca adentro cada vez que se registra alguien -->
-        <div style="margin-top:48px;">
-            <div class="sec-linea"></div>
-            <h2 class="sec-titulo">Perfiles registrados</h2>
-            <p class="sec-sub">Todos los perfiles cargados en esta sesión.</p>
-            <div id="lista-registros">
-                <!-- este texto lo reemplaza js cuando hay registros -->
-                <p style="color:#aaa; font-style:italic; font-size:0.9rem;">
-                    Todavía no hay perfiles registrados.
-                </p>
-            </div>
-        </div>
-
     </div>
 
     <footer>
-        <strong>Un poco de Genética</strong> · Sitio educativo de Genética · 2026
+        Un Poco de Genética · 2026
     </footer>
 
-    <!-- el script va al final para que cargue despues del html -->
     <script src="codigo.js"></script>
 </body>
 </html>
