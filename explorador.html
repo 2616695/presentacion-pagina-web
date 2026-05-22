@@ -2,226 +2,66 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un poco de Genética | Explorador</title>
+    <title>Un Poco de Genética | Explorador</title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <!-- navbar igual en las tres paginas, solo cambia la clase activo -->
     <nav>
-        <a href="index.html" class="nav-logo">Un poco de <span>Genética</span></a>
-        <ul class="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="explorador.html" class="activo">Explorador</a></li> <!-- esta pagina -->
-            <li><a href="laboratorio.html">Laboratorio</a></li>
-        </ul>
+        <a href="index.html">Inicio</a>
+        <a href="explorador.html">Explorador</a>
+        <a href="laboratorio.html">Laboratorio</a>
     </nav>
 
-    <div class="contenedor">
+    <h1>Explorador Genético</h1>
 
-        <div class="sec-linea"></div>
-        <h2 class="sec-titulo">Explorador Genético</h2>
-        <p class="sec-sub">Herramientas interactivas para calcular y explorar rasgos hereditarios.</p>
+    <!-- herramienta 1: tipo de sangre -->
+    <div class="caja">
+        <h2>Calculadora de Tipo de Sangre</h2>
+        <p>Seleccioná el tipo de sangre del padre y la madre para ver qué tipo puede tener el hijo.</p>
 
-        <!-- caja principal con las tres herramientas en tabs -->
-        <div class="herramienta">
+        <label>Tipo de sangre del Padre:</label>
+        <select id="sangre-padre">
+            <option value="">-- Seleccionar --</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="AB">AB</option>
+            <option value="O">O</option>
+        </select>
 
-            <!-- botones de las pestañas, cada uno llama a cambiarTab() con su nombre -->
-            <div class="tabs">
-                <button class="tab activo" onclick="cambiarTab('sangre', this)">🩸 Tipo de Sangre</button>
-                <button class="tab" onclick="cambiarTab('rasgo', this)">👁️ Rasgos Hereditarios</button>
-                <button class="tab" onclick="cambiarTab('adn', this)">🧬 Complemento de ADN</button>
-            </div>
+        <label>Tipo de sangre de la Madre:</label>
+        <select id="sangre-madre">
+            <option value="">-- Seleccionar --</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="AB">AB</option>
+            <option value="O">O</option>
+        </select>
 
-            <!-- PANEL 1: calcula el tipo de sangre del hijo segun los padres -->
-            <!-- empieza visible porque tiene la clase activo -->
-            <div id="panel-sangre" class="panel activo">
+        <button onclick="calcularSangre()">Calcular</button>
+        <button onclick="limpiarSangre()">Limpiar</button>
 
-                <p style="margin-bottom:24px; color:#555; font-size:0.92rem;">
-                    Seleccioná el tipo de sangre del padre y la madre para ver qué tipos de sangre puede tener el hijo.
-                </p>
+        <p id="resultado"></p>
+    </div>
 
-                <!-- dos columnas: una para el padre y otra para la madre -->
-                <div class="form-fila">
-                    <div>
-                        <label class="form-label">Tipo de sangre — Padre</label>
-                        <select id="sangre-padre" class="form-select">
-                            <option value="">— Seleccioná —</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="AB">AB</option>
-                            <option value="O">O</option>
-                        </select>
+    <!-- herramienta 2: complemento de adn -->
+    <div class="caja">
+        <h2>Complemento de ADN</h2>
+        <p>Escribí una cadena de ADN con las letras A, T, G, C y te genero la cadena complementaria.</p>
 
-                        <label class="form-label">Factor Rh — Padre</label>
-                        <select id="rh-padre" class="form-select">
-                            <option value="+">Positivo (+)</option>
-                            <option value="-">Negativo (−)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="form-label">Tipo de sangre — Madre</label>
-                        <select id="sangre-madre" class="form-select">
-                            <option value="">— Seleccioná —</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="AB">AB</option>
-                            <option value="O">O</option>
-                        </select>
+        <label>Cadena de ADN:</label>
+        <input type="text" id="cadena-adn" placeholder="Ej: ATGC" oninput="this.value = this.value.toUpperCase().replace(/[^ATGC]/g, '')">
 
-                        <label class="form-label">Factor Rh — Madre</label>
-                        <select id="rh-madre" class="form-select">
-                            <option value="+">Positivo (+)</option>
-                            <option value="-">Negativo (−)</option>
-                        </select>
-                    </div>
-                </div>
+        <button onclick="calcularADN()">Generar</button>
+        <button onclick="limpiarADN()">Limpiar</button>
 
-                <!-- los botones llaman a las funciones del codigo.js -->
-                <button class="btn-calcular" onclick="calcularSangre()">Calcular</button>
-                <button class="btn-limpiar" onclick="limpiarSangre()">Limpiar</button>
-
-                <!-- este div esta oculto y js lo muestra cuando hay resultado -->
-                <div id="resultado-sangre" class="resultado">
-                    <h4>Posibles tipos de sangre del hijo/a</h4>
-                    <div class="resultado-valor" id="val-sangre">—</div>
-                    <p id="desc-sangre"></p>
-                </div>
-
-            </div>
-
-            <!-- PANEL 2: cuadro de punnett para rasgos hereditarios -->
-            <!-- empieza oculto, js lo muestra al hacer clic en la pestaña -->
-            <div id="panel-rasgo" class="panel">
-
-                <p style="margin-bottom:24px; color:#555; font-size:0.92rem;">
-                    Usá el cuadro de Punnett para ver cómo se hereda un rasgo según el genotipo de cada progenitor. D = dominante, d = recesivo.
-                </p>
-
-                <!-- cuando cambia el select se actualiza el texto de los labels -->
-                <label class="form-label">Rasgo a analizar</label>
-                <select id="rasgo-tipo" class="form-select" onchange="actualizarRasgo()">
-                    <option value="ojos">Color de ojos (Marrón dominante / Azul recesivo)</option>
-                    <option value="cabello">Tipo de cabello (Rizado dominante / Liso recesivo)</option>
-                    <option value="lobulo">Lóbulo de oreja (Libre dominante / Unido recesivo)</option>
-                    <option value="pulgar">Pulgar (Arqueado dominante / Recto recesivo)</option>
-                </select>
-
-                <div class="form-fila">
-                    <div>
-                        <!-- el id label-padre lo uso en js para cambiar el texto -->
-                        <label class="form-label" id="label-padre">Genotipo del Padre</label>
-                        <select id="gen-padre" class="form-select">
-                            <option value="DD">DD — Homocigoto dominante</option>
-                            <option value="Dd">Dd — Heterocigoto</option>
-                            <option value="dd">dd — Homocigoto recesivo</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="form-label" id="label-madre">Genotipo de la Madre</label>
-                        <select id="gen-madre" class="form-select">
-                            <option value="DD">DD — Homocigoto dominante</option>
-                            <option value="Dd">Dd — Heterocigoto</option>
-                            <option value="dd">dd — Homocigoto recesivo</option>
-                        </select>
-                    </div>
-                </div>
-
-                <button class="btn-calcular" onclick="calcularRasgo()">Calcular herencia</button>
-                <button class="btn-limpiar" onclick="limpiarRasgo()">Limpiar</button>
-
-                <div id="resultado-rasgo" class="resultado">
-                    <h4>Cuadro de Punnett — Resultado</h4>
-                    <!-- js genera el html de las 4 celdas aca adentro -->
-                    <div id="contenido-rasgo"></div>
-                </div>
-
-            </div>
-
-            <!-- PANEL 3: calcula el complemento de una cadena de adn -->
-            <div id="panel-adn" class="panel">
-
-                <p style="margin-bottom:24px; color:#555; font-size:0.92rem;">
-                    Escribí una cadena de ADN usando solo las letras A, T, G, C y el sitio te genera automáticamente la cadena complementaria y el ARN mensajero.
-                </p>
-
-                <!-- el oninput convierte a mayuscula y borra letras que no sean bases -->
-                <label class="form-label">Cadena de ADN (solo A, T, G, C)</label>
-                <input
-                    type="text"
-                    id="cadena-adn"
-                    class="form-input"
-                    placeholder="Ej: ATGCGTACG"
-                    oninput="this.value = this.value.toUpperCase().replace(/[^ATGC]/g, '')"
-                >
-
-                <button class="btn-calcular" onclick="calcularADN()">Generar complemento</button>
-                <button class="btn-limpiar" onclick="limpiarADN()">Limpiar</button>
-
-                <!-- muestra las tres cadenas: original, complementaria y arnm -->
-                <div id="resultado-adn" class="resultado">
-                    <h4>Cadena original (5' → 3')</h4>
-                    <div class="resultado-valor" id="res-original" style="font-size:1.1rem; letter-spacing:3px; color:#1a6b2f; word-break:break-all;"></div>
-
-                    <h4 style="margin-top:16px;">Cadena complementaria (3' → 5')</h4>
-                    <div class="resultado-valor" id="res-complemento" style="font-size:1.1rem; letter-spacing:3px; color:#2196f3; word-break:break-all;"></div>
-
-                    <h4 style="margin-top:16px;">ARN mensajero (ARNm)</h4>
-                    <div class="resultado-valor" id="res-arnm" style="font-size:1.1rem; letter-spacing:3px; color:#ff9800; word-break:break-all;"></div>
-
-                    <p style="margin-top:14px;" id="res-adn-info"></p>
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- tabla informativa sobre las leyes de mendel -->
-        <div class="sec-linea"></div>
-        <h2 class="sec-titulo">Leyes de Mendel</h2>
-        <p class="sec-sub">Los tres principios que explican cómo se transmiten los rasgos hereditarios de generación en generación.</p>
-
-        <div class="tabla-contenedor">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ley</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Ejemplo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong style="color:#1a6b2f">1ª</strong></td>
-                        <td>Uniformidad</td>
-                        <td>La primera generación filial de dos razas puras es uniforme en fenotipo.</td>
-                        <td>PP × pp → todos Pp</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color:#1a6b2f">2ª</strong></td>
-                        <td>Segregación</td>
-                        <td>Los alelos de un gen se separan al formarse los gametos. Cada gameto lleva un solo alelo.</td>
-                        <td>Pp × Pp → 3:1</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color:#1a6b2f">3ª</strong></td>
-                        <td>Distribución independiente</td>
-                        <td>Los alelos de distintos genes se distribuyen de forma independiente en los gametos.</td>
-                        <td>AABB × aabb → 9:3:3:1</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
+        <p id="resultado-adn"></p>
     </div>
 
     <footer>
-        <strong>Un poco de Genética</strong> · Sitio educativo de Genética · 2026
+        Un Poco de Genética · 2026
     </footer>
 
-    <!-- conecto el js al final para que el html cargue primero -->
     <script src="codigo.js"></script>
 </body>
 </html>
